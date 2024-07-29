@@ -8,9 +8,8 @@ public sealed class Doctor
     public string CPF { get; private set; }
     public string CRM { get; private set; }
     public string Password { get; private set; }
-    public List<Availability> Availabilities { get; set; }
 
-    public Doctor(Guid id, string name, string email, string cpf, string crm, string password, List<Availability> availabilities)
+    public Doctor(Guid id, string name, string email, string cpf, string crm, string password)
     {
         Id = id;
         Name = name;
@@ -18,6 +17,5 @@ public sealed class Doctor
         CPF = cpf;
         CRM = crm;
         Password = password;
-        Availabilities = availabilities;
     }
 }

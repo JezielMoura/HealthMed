@@ -1,4 +1,4 @@
-namespace HealthMed.Domain.DoctorAggregate;
+namespace HealthMed.Domain.AvailabilityAggregate;
 
 public sealed class Availability
 {
