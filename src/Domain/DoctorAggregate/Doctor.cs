@@ -18,4 +18,7 @@ public sealed class Doctor
         CRM = crm;
         Password = password;
     }
+
+    #nullable disable
+    private Doctor() {}
 }

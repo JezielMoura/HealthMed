@@ -1,0 +1,18 @@
+using HealthMed.Infrastructure.Persistence.Context;
+
+namespace HealthMed.Infrastructure.Persistence.Repositories;
+
+internal sealed class PatientRepository(AppDbContext appDbContext) : IPatientRepository
+{
+    private readonly DbSet<Patient> _dbSet = appDbContext.Patients;
+    
+    public async Task<Patient?> Get(string email)
+    {
+        return await _dbSet.FirstOrDefaultAsync(x => x.Email == email);
+    }
+
+    public async Task Add(Patient patient)
+    {
+        await _dbSet.AddAsync(patient);
+    }
+}

@@ -16,4 +16,7 @@ public sealed class Availability
         IsAvailable = isAvailable;
         DateTime = dateTime;
     }
+
+    #nullable disable
+    private Availability() {}
 }

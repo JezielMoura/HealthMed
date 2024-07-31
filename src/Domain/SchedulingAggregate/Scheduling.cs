@@ -16,4 +16,7 @@ public sealed class Scheduling
         AvailabilityId = availabilityId;
         Date = date;
     }
+
+    #nullable disable
+    private Scheduling() {}
 }

@@ -16,4 +16,7 @@ public sealed class Patient
         CPF = cpf;
         Password = password;
     }
+
+    #nullable disable
+    private Patient() {}
 }
