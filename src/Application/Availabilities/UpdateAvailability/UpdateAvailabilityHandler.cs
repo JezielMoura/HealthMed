@@ -1,19 +1,20 @@
 using HealthMed.Application.Abstractions;
+using HealthMed.Application.Availabilities.CreateAvailability;
 using HealthMed.Domain.AvailabilityAggregate;
 using HealthMed.Domain.DoctorAggregate;
 using MediatR;
 
-namespace HealthMed.Application.Availabilities.CreateAvailability;
+namespace HealthMed.Application.Availabilities.UpdateAvailability;
 
-internal sealed class UpdateAvailabilityHandler : IRequestHandler<UpdateAvailabilityCommand, Result<bool, Error>>
+public sealed class UpdateAvailabilityHandler : IRequestHandler<UpdateAvailabilityCommand, Result<bool, Error>>
 {
     private readonly IAvailabilityRepository _availabilityRepository;
     private readonly IDoctorRepository _doctorRepository;
     private readonly IUnitOfWork _unitOfWork;
 
     public UpdateAvailabilityHandler(
-        IAvailabilityRepository availabilityRepository, 
-        IUnitOfWork unitOfWork, 
+        IAvailabilityRepository availabilityRepository,
+        IUnitOfWork unitOfWork,
         IDoctorRepository doctorRepository)
     {
         _availabilityRepository = availabilityRepository;
@@ -28,7 +29,7 @@ internal sealed class UpdateAvailabilityHandler : IRequestHandler<UpdateAvailabi
         var doctor = await _doctorRepository.Get(command.DoctorId);
 
         if (doctor is null)
-            return new Error(Errors: [ new("Doctor not found") ]);
+            return new Error(Errors: [new("Doctor not found")]);
 
         await _availabilityRepository.Delete(command.DoctorId, command.From, command.To);
 

@@ -4,7 +4,7 @@ using MediatR;
 
 namespace HealthMed.Application.Patients.CreatePatient;
 
-internal sealed class CreatePatientHandler : IRequestHandler<CreatePatientCommand, Result<Guid, Error>>
+public sealed class CreatePatientHandler : IRequestHandler<CreatePatientCommand, Result<Guid, Error>>
 {
     private readonly IPatientRepository _patientRepository;
     private readonly IUnitOfWork _unitOfWork;

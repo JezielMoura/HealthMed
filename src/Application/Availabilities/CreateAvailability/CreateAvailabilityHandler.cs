@@ -5,7 +5,7 @@ using MediatR;
 
 namespace HealthMed.Application.Availabilities.CreateAvailability;
 
-internal sealed class CreateAvailabilityHandler : IRequestHandler<CreateAvailabilityCommand, Result<bool, Error>>
+public sealed class CreateAvailabilityHandler : IRequestHandler<CreateAvailabilityCommand, Result<bool, Error>>
 {
     private readonly IAvailabilityRepository _availabilityRepository;
     private readonly IDoctorRepository _doctorRepository;

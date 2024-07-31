@@ -7,7 +7,7 @@ using MediatR;
 
 namespace HealthMed.Application.Schedulings.CreateScheduling;
 
-internal sealed class CreateSchedulingHandler : IRequestHandler<CreateSchedulingCommand, Result<Guid, Error>>
+public sealed class CreateSchedulingHandler : IRequestHandler<CreateSchedulingCommand, Result<Guid, Error>>
 {
     private readonly ISchedulingRepository _schedulingRepository;
     private readonly IAvailabilityRepository _availabilityRepository;
