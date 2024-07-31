@@ -15,4 +15,9 @@ internal sealed class PatientRepository(AppDbContext appDbContext) : IPatientRep
     {
         await _dbSet.AddAsync(patient);
     }
+
+    public async Task<Patient?> Get(Guid patientId)
+    {
+        return await _dbSet.FindAsync(patientId);
+    }
 }

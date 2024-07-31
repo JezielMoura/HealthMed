@@ -1,0 +1,74 @@
+POST https://localhost:5000/api/doctors HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "DR Jeziel",
+  "email": "jezielmoura@outlook.com",
+  "cpf": "111.111.111-00",
+  "crm": "1234",
+  "password": "12345678"
+}
+###
+POST https://localhost:5000/api/auth HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "jezielmoura@outlook.com",
+  "password": "12345678",
+  "isDoctor": true
+}
+###
+POST https://localhost:5000/api/patients HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Paciente Jeziel",
+  "email": "jeziel@gmail.com",
+  "cpf": "222.222.222-00",
+  "password": "87654321"
+}
+###
+POST https://localhost:5000/api/auth HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "jeziel@gmail.com",
+  "password": "87654321",
+  "isDoctor": false
+}
+###
+POST https://localhost:5000/api/availabilities HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGFjaWVudGUgSmV6aWVsIiwicm9sZSI6IlBhdGllbnQiLCJuYmYiOjE3MjI0NjE0MjUsImV4cCI6MTcyMjQ2NTAyNSwiaWF0IjoxNzIyNDYxNDI1fQ.4fIWcy0iXHCHsKX0nbBy3P6YG9pre5Y14dsttl31p-o
+
+{
+  "doctorId": "193c2456-4302-4141-91f7-2f5067f4d78e",
+  "isAvailable": true,
+  "from": "2024-08-06T08:00:00",
+  "to": "2024-08-06T12:00:00",
+  "durationInMinutes": 30
+}
+###
+PUT https://localhost:5000/api/availabilities HTTP/1.1
+Content-Type: application/json
+
+{
+  "doctorId": "193c2456-4302-4141-91f7-2f5067f4d78e",
+  "isAvailable": false,
+  "from": "2024-08-05T08:00:00",
+  "to": "2024-08-05T12:00:00",
+  "durationInMinutes": 60
+}
+###
+GET https://localhost:5000/api/availabilities HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGFjaWVudGUgSmV6aWVsIiwicm9sZSI6IlBhdGllbnQiLCJuYmYiOjE3MjI0NjI1ODEsImV4cCI6MTcyMjQ2NjE4MSwiaWF0IjoxNzIyNDYyNTgxfQ.E_G_k5feluhS0QWUqXEJgsSbljBPfQQxH3wIF6GBJPU
+###
+POST https://localhost:5000/api/schedulings HTTP/1.1
+Content-Type: application/json
+
+{
+  "doctorId": "193c2456-4302-4141-91f7-2f5067f4d78e",
+  "patientId": "5b258bad-6b1a-43c8-987f-b5dc5c1a8fcb",
+  "date": "2024-08-05T10:00:00"
+}
+###

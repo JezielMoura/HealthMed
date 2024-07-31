@@ -26,7 +26,7 @@ public sealed class LoginHandler : IRequestHandler<LoginCommand, Result<string, 
             if (await _doctorRepository.Get(command.Email) is {} doctor)
             {
                 if (BC.Verify(command.Password, doctor.Password))
-                    return await _tokenProvider.Create(doctor.Name, "Doctor");
+                    return await _tokenProvider.Create(doctor.Name, nameof(Doctor));
             }
 
             return new Error(Errors: [ new("E-mail or password incorrect") ]);
@@ -35,7 +35,7 @@ public sealed class LoginHandler : IRequestHandler<LoginCommand, Result<string, 
         if(await _patientRepository.Get(command.Email) is {} patient)
         {
             if (BC.Verify(command.Password, patient.Password))
-                return await _tokenProvider.Create(patient.Name, "Patient");
+                return await _tokenProvider.Create(patient.Name, nameof(Patient));
         }
 
         return new Error(Errors: [ new("E-mail or password incorrect") ]);

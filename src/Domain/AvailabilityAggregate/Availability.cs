@@ -6,7 +6,7 @@ public sealed class Availability
     public Guid DoctorId { get; private set; }
     public string DoctorName { get; private set; }
     public bool IsAvailable { get; private set; }
-    public DateTime DateTime { get; private set; }
+    public DateTimeOffset DateTime { get; private set; }
 
     public Availability(Guid id, Guid doctorId, string doctorName, bool isAvailable, DateTime dateTime)
     {
@@ -16,6 +16,9 @@ public sealed class Availability
         IsAvailable = isAvailable;
         DateTime = dateTime;
     }
+
+    public void IsUnavailable() =>
+        IsAvailable = false;
 
     #nullable disable
     private Availability() {}

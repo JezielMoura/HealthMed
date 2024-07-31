@@ -6,10 +6,21 @@ internal sealed class AvailabilityConfiguration : IEntityTypeConfiguration<Avail
 {
     public void Configure(EntityTypeBuilder<Availability> builder)
     {
-        builder.ToTable("Availabilities");
+        builder
+            .ToTable("Availabilities");
 
-        builder.HasKey(p => p.Id);
+        builder
+            .HasKey(p => p.Id);
 
-        builder.Property(p => p.DoctorName).HasColumnType("varchar(120)");
+        builder
+            .HasOne<Doctor>()
+            .WithMany()
+            .OnDelete(DeleteBehavior.Cascade)
+            .HasForeignKey(e => e.DoctorId)
+            .IsRequired();
+
+        builder
+            .Property(p => p.DoctorName)
+            .HasColumnType("varchar(120)");
     }
 }

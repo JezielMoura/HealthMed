@@ -15,4 +15,9 @@ internal sealed class DoctorRepository(AppDbContext appDbContext) : IDoctorRepos
     {
         return await _dbSet.FirstOrDefaultAsync(x => x.Email == email);
     }
+
+    public async Task<Doctor?> Get(Guid id)
+    {
+        return await _dbSet.FindAsync(id);
+    }
 }

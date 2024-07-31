@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HealthMed.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240731003422_InitialMigration")]
+    [Migration("20240731174445_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -31,7 +31,7 @@ namespace HealthMed.Infrastructure.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("DateTime")
+                    b.Property<DateTimeOffset>("DateTime")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("DoctorId")
@@ -45,6 +45,8 @@ namespace HealthMed.Infrastructure.Persistence.Migrations
                         .HasColumnType("boolean");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
 
                     b.ToTable("Availabilities", (string)null);
                 });
@@ -116,11 +118,15 @@ namespace HealthMed.Infrastructure.Persistence.Migrations
                     b.Property<Guid>("AvailabilityId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTimeOffset>("Date")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("DoctorId")
                         .HasColumnType("uuid");
+
+                    b.Property<string>("DoctorName")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<Guid>("PatientId")
                         .HasColumnType("uuid");
@@ -135,6 +141,15 @@ namespace HealthMed.Infrastructure.Persistence.Migrations
                     b.HasIndex("PatientId");
 
                     b.ToTable("Schedulings", (string)null);
+                });
+
+            modelBuilder.Entity("HealthMed.Domain.AvailabilityAggregate.Availability", b =>
+                {
+                    b.HasOne("HealthMed.Domain.DoctorAggregate.Doctor", null)
+                        .WithMany()
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("HealthMed.Domain.SchedulingAggregate.Scheduling", b =>
