@@ -15,7 +15,7 @@ public sealed class GetAvailabilityHandler : IRequestHandler<GetAvailabilityQuer
     public async Task<IEnumerable<AvailabilityResponse>> Handle(GetAvailabilityQuery query, CancellationToken cancellationToken)
     {
         var availabilities = await _availabilityRepository.Get(query.Page, query.Limit);
-        var groupByDoctor = availabilities.GroupBy(x => x.DoctorName);
+        var groupByDoctor = availabilities.GroupBy(x => x.DoctorId);
         var allAvailabilities = groupByDoctor.Select(AvailabilityResponse.Create);
 
         return allAvailabilities;
