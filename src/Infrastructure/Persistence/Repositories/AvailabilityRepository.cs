@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using HealthMed.Infrastructure.Persistence.Context;
 
 namespace HealthMed.Infrastructure.Persistence.Repositories;
 
+[ExcludeFromCodeCoverage]
 internal sealed class AvailabilityRepository (AppDbContext appDbContext) : IAvailabilityRepository
 {
     private readonly DbSet<Availability> _dbSet = appDbContext.Availabilities;

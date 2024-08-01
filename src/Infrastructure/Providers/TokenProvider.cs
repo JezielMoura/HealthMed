@@ -2,9 +2,11 @@ using System.Security.Claims;
 using HealthMed.Application.Abstractions;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Diagnostics.CodeAnalysis;
 
 namespace HealthMed.Infrastructure.Providers;
 
+[ExcludeFromCodeCoverage]
 internal sealed class TokenProvider(byte[] key) : ITokenProvider
 {
     private readonly byte[] _key = key;

@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HealthMed.Infrastructure.Persistence.Configurations;
 
+[ExcludeFromCodeCoverage]
 internal sealed class SchedulingConfiguration : IEntityTypeConfiguration<Scheduling>
 {
     public void Configure(EntityTypeBuilder<Scheduling> builder)

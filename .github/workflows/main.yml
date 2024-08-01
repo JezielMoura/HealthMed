@@ -44,6 +44,11 @@ jobs:
     - name: test
       run: dotnet test -c Development test/Unit /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 
+    - name: Upload coverage reports
+      uses: codecov/codecov-action@v4.0.1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+
   push:
     runs-on: ubuntu-latest
     needs: [unit]
@@ -64,6 +69,6 @@ jobs:
     - name: build and push
       uses: docker/build-push-action@v6
       with:
-        tags: ghcr.io/JezielMoura/healthmed:${{ github.sha }}
+        tags: ghcr.io/jezielmoura/healthmed:${{ github.sha }}
         context: .
         push: true

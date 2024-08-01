@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using HealthMed.Application.Abstractions;
 using HealthMed.Infrastructure.Persistence.Context;
@@ -12,6 +13,7 @@ using Microsoft.OpenApi.Models;
 
 namespace HealthMed.Infrastructure.Extensions;
 
+[ExcludeFromCodeCoverage]
 public static class ServiceCollectionExtensions
 {
     public static void ConfigureRepositories(this IServiceCollection services)

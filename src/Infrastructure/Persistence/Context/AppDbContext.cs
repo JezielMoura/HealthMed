@@ -1,8 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using HealthMed.Application.Abstractions;
 using Nett.Core;
 
 namespace HealthMed.Infrastructure.Persistence.Context;
 
+[ExcludeFromCodeCoverage]
 internal sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options), IUnitOfWork
 {
     public DbSet<Availability> Availabilities => Set<Availability>();

@@ -1,11 +1,13 @@
 using HealthMed.Application.Abstractions;
 using Microsoft.Extensions.Configuration;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
 
 namespace HealthMed.Infrastructure.Services;
 
+[ExcludeFromCodeCoverage]
 internal sealed class MailService : IMailService
 {
     private readonly IConfiguration _configuration;

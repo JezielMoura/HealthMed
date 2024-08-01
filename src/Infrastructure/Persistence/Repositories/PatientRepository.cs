@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using HealthMed.Infrastructure.Persistence.Context;
 
 namespace HealthMed.Infrastructure.Persistence.Repositories;
 
+[ExcludeFromCodeCoverage]
 internal sealed class PatientRepository(AppDbContext appDbContext) : IPatientRepository
 {
     private readonly DbSet<Patient> _dbSet = appDbContext.Patients;
