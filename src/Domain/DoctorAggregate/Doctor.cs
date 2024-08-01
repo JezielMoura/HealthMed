@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace HealthMed.Domain.DoctorAggregate;
 
 public sealed class Doctor
@@ -20,5 +22,6 @@ public sealed class Doctor
     }
 
     #nullable disable
+    [ExcludeFromCodeCoverage]
     private Doctor() {}
 }

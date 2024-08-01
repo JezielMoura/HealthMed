@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using FluentValidation;
 
 namespace HealthMed.Application.Doctors.CreateDoctor;
 
+[ExcludeFromCodeCoverage]
 public sealed class CreateDoctorValidation : AbstractValidator<CreateDoctorCommand>
 {
     public CreateDoctorValidation()

@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using FluentValidation;
 
 namespace HealthMed.Application.Availabilities.CreateAvailability;
 
+[ExcludeFromCodeCoverage]
 public sealed class CreateAvailabilityValidation : AbstractValidator<CreateAvailabilityCommand>
 {
     public CreateAvailabilityValidation()
@@ -11,7 +13,7 @@ public sealed class CreateAvailabilityValidation : AbstractValidator<CreateAvail
             .WithMessage($"Put a datetime range valid for the availability duration");
     }
 
-    private bool ValidRange(DateTimeOffset from, DateTimeOffset to, int durationInMinutes)
+    private static bool ValidRange(DateTimeOffset from, DateTimeOffset to, int durationInMinutes)
     {
         var totalMinutes = (to - from).TotalMinutes;
         var totalAvailability = Math.Ceiling(totalMinutes / durationInMinutes);

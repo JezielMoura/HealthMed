@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace HealthMed.Application.Availabilities.CreateAvailability;
+namespace HealthMed.Application.Availabilities.UpdateAvailability;
 
 public sealed record UpdateAvailabilityCommand(
     Guid DoctorId,

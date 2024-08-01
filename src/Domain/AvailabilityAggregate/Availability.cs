@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace HealthMed.Domain.AvailabilityAggregate;
 
 public sealed class Availability
@@ -21,5 +23,6 @@ public sealed class Availability
         IsAvailable = false;
 
     #nullable disable
+    [ExcludeFromCodeCoverage]
     private Availability() {}
 }

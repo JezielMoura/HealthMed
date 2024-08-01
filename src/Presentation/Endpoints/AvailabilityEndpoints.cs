@@ -1,5 +1,6 @@
 using HealthMed.Application.Availabilities.CreateAvailability;
 using HealthMed.Application.Availabilities.GetAvailability;
+using HealthMed.Application.Availabilities.UpdateAvailability;
 using HealthMed.Presentation.Filters;
 using MediatR;
 using Nett.Core;

@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace HealthMed.Domain.SchedulingAggregate;
 
 public sealed class Scheduling
@@ -20,5 +22,6 @@ public sealed class Scheduling
     }
 
     #nullable disable
+    [ExcludeFromCodeCoverage]
     private Scheduling() {}
 }

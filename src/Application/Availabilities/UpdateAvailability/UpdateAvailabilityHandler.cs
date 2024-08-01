@@ -1,5 +1,4 @@
 using HealthMed.Application.Abstractions;
-using HealthMed.Application.Availabilities.CreateAvailability;
 using HealthMed.Domain.AvailabilityAggregate;
 using HealthMed.Domain.DoctorAggregate;
 using MediatR;
